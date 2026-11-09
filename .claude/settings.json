@@ -1,6 +1,24 @@
 {
   "permissions": {
     "defaultMode": "default",
+    "ask": [
+      "Bash(npm install)",
+      "Bash(npm install *)",
+      "Bash(npm i)",
+      "Bash(npm i *)",
+      "Bash(npm add)",
+      "Bash(npm add *)",
+      "Bash(yarn install)",
+      "Bash(yarn install *)",
+      "Bash(yarn add)",
+      "Bash(yarn add *)",
+      "Bash(pnpm install)",
+      "Bash(pnpm install *)",
+      "Bash(pnpm i)",
+      "Bash(pnpm i *)",
+      "Bash(pnpm add)",
+      "Bash(pnpm add *)"
+    ],
     "deny": [
       "Read(~/.routa/**)",
       "Edit(~/.routa/**)",
