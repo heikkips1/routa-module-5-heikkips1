@@ -8,3 +8,4 @@
 - [x] copy_group_access: IT asked for a way to line one group up with another
 - [x] Make the settings-shape test pass without the local recording, which CI doesn't have (the CI log showed ENOENT)
 - [x] Fix copy_group_access, which the security judge rated high twice: it must call requireAdmin, and only show the change, leaving applying to apply_change
+- [x] baseline_differences: a read-only tool that lists, in plain words, every setting that differs from client/security-baseline.json. It needs only a valid token (a read-only token works) and never patches or applies anything
