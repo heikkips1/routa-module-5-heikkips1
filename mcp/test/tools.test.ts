@@ -51,10 +51,17 @@ test("set_session_length only shows the change; apply_change applies it", async 
   assert.deepEqual(patches, [{ type: "policy", id: "session-length-hours", value: 8 }]);
 });
 
-test("copy_group_access shows the change, then applies it", async () => {
+test("copy_group_access only shows the change; apply_change applies it", async () => {
   const { patches } = fakePlatform();
-  assert.match(await copyGroupAccessTool.handler({ from: "staff", to: "contractors" }), /contractors gains documents/);
+  const shown = await copyGroupAccessTool.handler({ from: "staff", to: "contractors" });
+  assert.match(shown, /contractors gains documents/);
   assert.equal(patches.length, 0);
-  await copyGroupAccessTool.handler({ from: "staff", to: "contractors", confirm: true });
+  await applyChangeTool.handler({ id: idOf(shown) });
   assert.equal(patches.length, 1);
+});
+
+test("a read-only token can't use copy_group_access", async () => {
+  const { patches } = fakePlatform("read");
+  await assert.rejects(copyGroupAccessTool.handler({ from: "staff", to: "contractors" }), /read-only/);
+  assert.equal(patches.length, 0);
 });
