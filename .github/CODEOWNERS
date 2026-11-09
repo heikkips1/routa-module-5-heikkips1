@@ -1,0 +1,2 @@
+# The token check is the only place that enforces scope. Its owner must approve changes to it.
+mcp/src/token-check.ts @jussi-koponen
