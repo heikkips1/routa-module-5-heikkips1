@@ -7,5 +7,6 @@ export async function requireToken(): Promise<void> {
 
 export async function requireAdmin(): Promise<void> {
   const { scope } = await whoami();
+  # comment test
   if (scope !== "admin") throw new Error("This token is read-only. Changing settings takes an admin token. Nothing was changed.");
 }
